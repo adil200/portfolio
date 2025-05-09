@@ -12,9 +12,9 @@ const YouTubeSection = () => {
   useEffect(() => {
     // Simulate API call
     const timer = setTimeout(() => {
-      setViews('10.5K'); // Example static data
-      setLikes('1.2K');
-      setComments('105');
+      setViews('4535'); // Example static data
+      setLikes('130');
+      setComments('23');
     }, 1500);
     return () => clearTimeout(timer);
   }, []);
