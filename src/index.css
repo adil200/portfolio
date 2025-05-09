@@ -1,0 +1,101 @@
+/* src/index.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+
+:root {
+  --header-height: 4.5rem;
+  --font-semi: 600;
+
+  --hue-color: 224; /* You might want to define this based on your React app's theme */
+  --first-color: hsl(var(--hue-color), 89%, 60%);
+  /* --second-color: hsl(7, 2%, 99%); /* Original: very light, almost white */
+  --second-color: #c9d1d9; /* Adapted for dark theme from your .profile-section */
+
+
+  --body-font: "Poppins", sans-serif;
+  --big-font-size: 2rem;
+  --h2-font-size: 1.25rem;
+  --normal-font-size: .938rem;
+  --smaller-font-size: .75rem;
+
+  --mb-1: 0.5rem; /* Added for consistency */
+  --mb-2: 1rem;
+  --mb-3: 1.5rem; /* Added for consistency */
+  --mb-4: 2rem;
+  --mb-5: 2.5rem;
+  --mb-6: 3rem;
+
+  --z-back: -10;
+  --z-normal: 1; /* Added */
+  --z-tooltip: 10; /* Added */
+  --z-fixed: 100;
+  --z-modal: 1000; /* Added */
+
+  /* Colors from GitHub calendar for consistency if you re-implement */
+  --color-calendar-graph-day-bg: #2d333b; /* Darker background for empty days */
+  --color-calendar-graph-day-L1-bg: #0e4429;
+  --color-calendar-graph-day-L2-bg: #006d32;
+  --color-calendar-graph-day-L3-bg: #26a641;
+  --color-calendar-graph-day-L4-bg: #39d353;
+}
+
+@media screen and (min-width: 968px) {
+  :root {
+    --big-font-size: 3.5rem;
+    --h2-font-size: 2rem;
+    --normal-font-size: 1rem;
+    --smaller-font-size: .875rem;
+  }
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0; /* Remove default margin. Header height will be handled by page content padding */
+  font-family: var(--body-font);
+  font-size: var(--normal-font-size);
+  background-color: black; /* Your main background color */
+  color: var(--second-color); /* Default text color */
+  line-height: 1.6; /* Improved readability */
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: var(--first-color); /* Link color, can be overridden */
+}
+a:hover {
+  color: hsl(var(--hue-color), 89%, 70%); /* Lighter version of first-color on hover */
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Reset button styles (optional but good for consistency) */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: inherit;
+}

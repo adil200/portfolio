@@ -1,0 +1,1009 @@
+/* src/App.css */
+
+/* ======= REUSABLE CSS CLASSES ======= */
+.section {
+  padding-top: 4rem;
+  padding-bottom: 2rem;
+}
+
+/* src/App.css */
+
+/* ... (other styles) ... */
+
+.section-title {
+  position: relative; /* Necessary for absolute positioning of ::after */
+  font-size: var(--h2-font-size);
+  color: var(--first-color);
+  margin-top: var(--mb-2);
+  margin-bottom: var(--mb-4); /* This creates space AFTER the title AND its underline */
+  text-align: center;
+  padding-bottom: 1rem; /* Add some padding to the bottom of the title itself
+                           to create space for the underline to sit in,
+                           especially if margin-bottom is applied to the title directly */
+}
+
+.section-title::after {
+  position: absolute;
+  content: "";
+  width: 60px; /* Or your desired width */
+  height: 0.18rem; /* Thickness of the line */
+  background-color: var(--first-color);
+  left: 50%;
+  transform: translateX(-50%); /* Center the line */
+  /*
+    KEY CHANGE: Ensure 'bottom' positions it below the text.
+    A small positive value or zero, relative to the bottom of the .section-title element's content box.
+    If .section-title has padding-bottom, the underline can sit within that padding.
+  */
+  bottom: 0; /* Positions the underline at the very bottom of the .section-title's content + padding area */
+             /* Previously, it might have been a negative value like -var(--mb-2) which pushed it up */
+}
+
+/* ... (rest of your App.css) ... */
+.bd-grid {
+  max-width: 1024px;
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--mb-2);
+  padding-right: var(--mb-2);
+}
+
+.button {
+  display: inline-block;
+  background-color: var(--first-color);
+  color: black;
+  padding: .9rem 2.2rem;
+  font-weight: var(--font-semi);
+  border-radius: .5rem;
+  transition: .3s;
+  border: none;
+  cursor: pointer;
+}
+.button:hover {
+  background-color: hsl(var(--hue-color), 89%, 70%);
+  color: black;
+  transform: translateY(-2px);
+}
+
+/* ======= HEADER ======= */
+.l-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: black;
+  transition: box-shadow 0.3s ease;
+}
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: var(--font-semi);
+}
+.nav__logo {
+  color: var(--second-color);
+  font-size: 1.5rem;
+  font-weight: var(--font-semi);
+  display: flex;
+  align-items: center;
+}
+.nav__logo-img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+.nav__menu {
+  /* Desktop styles */
+}
+.nav__list {
+  display: flex;
+  align-items: center;
+  gap: var(--mb-4);
+}
+.nav__link {
+  position: relative;
+  color: var(--second-color);
+  padding: 0.5rem 0;
+  transition: color 0.3s;
+}
+.nav__link:hover {
+  color: var(--first-color);
+}
+.nav__link.active-link {
+  color: var(--first-color);
+  font-weight: bold;
+}
+.nav__link.active-link::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--first-color);
+  left: 0;
+  bottom: -2px;
+}
+.nav__toggle {
+  color: var(--second-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none;
+  z-index: calc(var(--z-fixed) + 1);
+}
+.nav__toggle i { /* Ensure icon inside toggle is styled if needed */
+  font-size: 1.5rem; /* Match parent or adjust */
+  color: var(--second-color);
+}
+
+
+/* ======= HOME SECTION (Corrected) ======= */
+.home {
+  position: relative;
+  padding-top: calc(var(--header-height) + 2rem); /* Space for fixed header */
+  padding-bottom: 3rem;
+  min-height: 100vh; /* Try to fill viewport height */
+  display: flex; /* To vertically center its content (.home__container) */
+  align-items: center;
+  overflow: hidden; /* Prevent blob overflow from causing scrollbars */
+}
+
+.home__container {
+  width: 100%;
+  display: grid;
+  gap: 2rem; /* Default gap for mobile (stacked items) */
+  align-items: center; /* Vertically align items in grid cells */
+}
+
+.home__left-content { /* Wrapper for text and social icons */
+  order: 1; /* On mobile, this block comes first */
+  text-align: center; /* Center its children on mobile */
+}
+
+.home__data {
+  /* On mobile, this will be centered by .home__left-content */
+}
+
+.home__title {
+  font-size: var(--big-font-size);
+  margin-bottom: var(--mb-4);
+  line-height: 1.2;
+}
+.home__title-color {
+  color: var(--first-color);
+}
+.home__subtitle-text {
+  font-size: var(--h2-font-size);
+  min-height: 1.5em;
+}
+.home__subtitle-text::after {
+  content: "|";
+  color: var(--first-color);
+  animation: blink-caret 0.75s step-end infinite;
+}
+@keyframes blink-caret { /* Ensure this is defined if not already */
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.home__social { /* Container for social icons */
+  display: flex;
+  justify-content: center; /* Center icons on mobile */
+  gap: var(--mb-3);
+  margin-top: var(--mb-4); /* Space below contact button */
+}
+.home__social-icon {
+  font-size: 1.8rem;
+  color: var(--second-color);
+  transition: color 0.3s;
+}
+.home__social-icon:hover {
+  color: var(--first-color);
+}
+
+.home__img-container {
+  order: 2; /* On mobile, image comes after text content */
+  justify-self: center; /* Center image on mobile */
+  width: 260px; /* Mobile size for image */
+  margin-top: var(--mb-4); /* Space above image on mobile if text is short */
+}
+.home__blob {
+  fill: var(--first-color);
+  width: 100%;
+  height: auto; /* Maintain aspect ratio */
+}
+
+/* --- Desktop Layout for Home Section --- */
+@media screen and (min-width: 768px) {
+  .home {
+    padding-top: calc(var(--header-height) + 3rem);
+    padding-bottom: 4rem;
+  }
+  #home .home__blob{
+    padding-left:48px;
+  }
+
+  .home__container {
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); /* Left col gets more space */
+    gap: 2.5rem; /* Adjust gap between columns */
+    align-items: center; /* Vertically center columns */
+  }
+
+  .home__left-content {
+    order: 1; /* Ensure it's the first column */
+    text-align: left; /* Align its content to the left */
+  }
+
+  .home__data {
+    /* No specific changes needed, inherits text-align: left */
+  }
+
+  .home__social {
+    justify-content: flex-start; /* Align icons to the left under button */
+    margin-top: var(--mb-3); /* Consistent margin */
+  }
+
+  .home__img-container {
+    order: 2; /* Ensure it's the second column */
+    justify-self: flex-end; /* Push image to right of its column */
+    width: 320px;
+    margin-top: 0; /* Reset mobile margin */
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .home {
+    padding-top: calc(var(--header-height) + 4rem);
+    padding-bottom: 5rem;
+  }
+  .home__container {
+    grid-template-columns: minmax(0, 1.75fr) minmax(0, 1fr); /* More space to left */
+    gap: 3rem;
+  }
+  .home__img-container {
+    width: 380px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .home__container {
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+    gap: 4rem;
+  }
+  .home__img-container {
+    width: 400px;
+  }
+}
+
+/* ... (other styles) ... */
+
+/* ======= ABOUT SECTION ======= */
+.about__container {
+  display: grid; /* Enable grid layout */
+  /* Mobile first: items will stack by default */
+  gap: 2rem; /* Gap between image and text when stacked on mobile */
+  align-items: center; /* Vertically align items within their grid areas */
+  text-align: center; /* Center content on mobile */
+}
+
+.about__img-container {
+  justify-self: center; /* Center image horizontally on mobile */
+  order: 1; /* Image first on mobile by default (can be changed) */
+}
+.about__img-container img {
+  width: 200px;
+  max-width: 100%; /* Ensure it doesn't overflow its container */
+  border-radius: 0.5rem;
+}
+
+.about__content {
+  order: 2; /* Text content second on mobile */
+}
+
+.about__subtitle {
+  font-size: var(--h2-font-size);
+  color: var(--first-color);
+  margin-bottom: var(--mb-2);
+}
+.about__text {
+  margin-bottom: var(--mb-4);
+  line-height: 1.7;
+  /* text-align: left; /* Will be set for desktop */
+}
+.about__buttons {
+  display: flex;
+  flex-direction: column; /* Stack buttons on mobile */
+  gap: var(--mb-2);
+  align-items: center; /* Center buttons when stacked */
+  margin-top: var(--mb-2);
+}
+
+
+/* --- Desktop Layout for About Section (e.g., >= 768px) --- */
+@media screen and (min-width: 768px) {
+  .about__container {
+    grid-template-columns: auto 1fr; /* Image takes its content width, text takes remaining space */
+    /* Or: grid-template-columns: 0.8fr 1.2fr; /* Give image slightly less space than text */
+    /* Or: grid-template-columns: repeat(2, 1fr); /* Two equal columns */
+    gap: 3rem; /* Gap between image and text columns */
+    text-align: left; /* Align text to the left for desktop view */
+  }
+
+  .about__img-container {
+    order: 1; /* Image on the left */
+    justify-self: center; /* Center image within its column, or 'start' */
+  }
+  .about__img-container img {
+      width: 250px; /* Slightly larger image for desktop */
+  }
+
+  .about__content {
+    order: 2; /* Text content on the right */
+    text-align: left; /* Ensure text is left-aligned */
+  }
+
+  .about__buttons {
+    flex-direction: row; /* Buttons side-by-side */
+    justify-content: flex-start; /* Align buttons to the left */
+    align-items: center; /* Vertically align buttons */
+  }
+  .about__text {
+    text-align: left; /* Ensure paragraph text is also left-aligned */
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .about__container {
+    grid-template-columns: 0.7fr 1.3fr; /* Example: Image takes 0.7 parts, text 1.3 parts */
+    gap: 4rem;
+  }
+  .about__img-container img {
+    width: 300px; /* Even larger image */
+  }
+}
+
+
+/* ======= QUALIFICATION (My Journey) SECTION ======= */
+.qualification__container {
+  max-width: 768px; /* As per your CSS */
+  margin-left: auto;
+  margin-right: auto;
+}
+.qualification__tabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--mb-4);
+  gap: var(--mb-2);
+}
+.qualification__button {
+  font-size: var(--h2-font-size);
+  font-weight: var(--font-semi);
+  color: var(--second-color); /* Default color */
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: var(--mb-1) var(--mb-2);
+  border-radius: .5rem;
+  transition: color 0.3s, background-color 0.3s;
+}
+.qualification__button:hover {
+  color: var(--first-color);
+}
+.qualification__button.qualification__active {
+  color: black; /* Text color for active tab */
+  background-color: var(--first-color);
+}
+.qualification__icon {
+  font-size: 1.8rem;
+  margin-right: var(--mb-1);
+}
+.qualification__sections {
+  /* Content for sections will be displayed based on active tab */
+}
+.qualification__content {
+  display: none; /* Hidden by default */
+}
+.qualification__content-active {
+  display: block; /* Shown when active */
+}
+.qualification__data {
+  display: grid;
+  grid-template-columns: 1fr max-content 1fr;
+  column-gap: 1.5rem;
+  margin-bottom: var(--mb-2); /* Spacing between entries */
+}
+.qualification__title {
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi);
+  color: var(--second-color); /* Changed from white for better contrast on black bg */
+  margin-bottom: 0.25rem;
+}
+.qualification__subtitle {
+  display: inline-block;
+  font-size: var(--smaller-font-size);
+  color: hsl(var(--hue-color), 30%, 70%); /* Lighter text */
+  margin-bottom: var(--mb-2);
+}
+.qualification__calendar {
+  font-size: var(--smaller-font-size);
+  color: hsl(var(--hue-color), 30%, 60%);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+.qualification__rounder {
+  display: inline-block;
+  width: 13px;
+  height: 13px;
+  background-color: var(--first-color);
+  border-radius: 50%;
+}
+.qualification__line {
+  display: block;
+  width: 2px;
+  height: 100%;
+  background-color: var(--first-color);
+  transform: translate(5px, -13px); /* Adjust to connect rounders */
+}
+/* Align text based on position in grid */
+.qualification__data div:nth-child(odd) { text-align: right; }
+.qualification__data div:nth-child(even) { text-align: center; /* For the rounder/line */ }
+
+
+/* ======= SKILLS SECTION (Tech Stack) ======= */
+.skills__container { /* Replaces .profile-section for tech stack */
+  text-align: center;
+}
+.skills__list { /* Replaces .image-container */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--mb-1);
+  margin-top: var(--mb-2);
+}
+.skills__list img { /* Style for the shield badges */
+  height: 30px; /* Example height, adjust as needed */
+}
+
+/* ======= BLOGS & PROJECTS SECTION (work section in static CSS) ======= */
+.work__container {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Enable this line */
+}
+.work__card { /* Replaces .work__img and .project__card */
+  background-color: #161b22; /* Darker card background */
+  padding: 1.5rem;
+  border-radius: .75rem;
+  text-align: center;
+  transition: transform 0.3s, box-shadow 0.3s;
+  color: var(--second-color);
+  border: 1px solid #30363d; /* Subtle border */
+  
+}
+.work__card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0px 8px 25px hsla(var(--hue-color), 89%, 60%, 0.2);
+}
+.work__card img {
+  border-radius: .5rem;
+  margin-bottom: var(--mb-2);
+  height: 180px; /* Fixed height for images */
+  object-fit:fill;
+  width: 100%;
+}
+.work__card-title {
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi);
+  margin-bottom: var(--mb-1);
+  min-height: 2.5em; /* Space for two lines of text */
+}
+.work__card-description {
+  font-size: var(--smaller-font-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem;
+  color: hsl(var(--hue-color), 30%, 70%);
+}
+.work__card-description img { /* For AV/GFG logos */
+  width: 18px;
+  height: 18px;
+  margin: 0; /* Reset margin if any from global img styles */
+  border-radius: 0;
+  object-fit: contain;
+}
+.work__see-more-link {
+  display: block;
+  text-align: center;
+  margin-top: var(--mb-4);
+  padding: var(--mb-1) 0;
+}
+
+
+/* ======= YOUTUBE SECTION ======= */
+.youtube__container {
+  text-align: center;
+}
+.youtube__video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  height: 0;
+  overflow: hidden;
+  max-width: 600px; /* Max width for the video */
+  margin: 0 auto var(--mb-4);
+  border-radius: .5rem;
+  border: 1px solid #30363d;
+}
+.youtube__video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.youtube__stats {
+  display: flex;
+  justify-content: center;
+  gap: var(--mb-4);
+}
+.youtube__stat-item {
+  text-align: center;
+}
+.youtube__stat-item span:first-child {
+  font-size: 1.5rem; /* Size for the number */
+  color: var(--first-color);
+  font-weight: var(--font-semi);
+  display: block;
+}
+.youtube__stat-item span:last-child {
+  font-size: var(--smaller-font-size);
+  color: hsl(var(--hue-color), 30%, 70%);
+}
+
+/* ======= CONTACT SECTION ======= */
+.contact__container {
+  row-gap: 2rem;
+  text-align: center; /* Center the form on larger screens if not full width */
+}
+.contact__form {
+  max-width: 500px; /* Max width for the form */
+  margin: 0 auto; /* Center the form */
+}
+.contact__input,
+.contact__textarea {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid #30363d; /* Border for inputs */
+  background-color: #0d1117; /* Dark input background */
+  color: var(--second-color);
+  font-size: var(--normal-font-size);
+  margin-bottom: var(--mb-2);
+  outline: none;
+  transition: border-color 0.3s;
+}
+.contact__input::placeholder,
+.contact__textarea::placeholder {
+  color: hsl(var(--hue-color), 20%, 50%);
+}
+.contact__input:focus,
+.contact__textarea:focus {
+  border-color: var(--first-color);
+}
+.contact__textarea {
+  resize: vertical; /* Allow vertical resize */
+  min-height: 120px;
+}
+.contact__button { /* Reuses .button style, can add specifics */
+  width: 100%;
+}
+/* src/App.css */
+
+/* ... (other styles) ... */
+
+/* ======= FOOTER ======= */
+.footer {
+  /* background-color: #0d1117; */ /* REMOVE or comment out this line */
+  background-color: transparent;    /* EXPLICITLY set to transparent */
+  padding: 2rem 0 var(--mb-2); /* Reduced top padding slightly, adjust as needed */
+  padding-bottom: 3rem;
+  text-align: center;
+  /* border-top: 1px solid #30363d; */ /* Consider removing or making this border much lighter if bg is transparent */
+  position: relative; /* Keep for z-index stacking if needed */
+  z-index: var(--z-normal); /* Ensure it's above particles but below modals etc. */
+}
+
+.footer__social {
+  display: flex;
+  justify-content: center;
+  gap: var(--mb-3);
+  margin-bottom: var(--mb-2);
+}
+.footer__social-icon {
+  font-size: 1.5rem;
+  color: var(--second-color); /* Ensure this color is visible on your page background */
+  transition: color 0.3s;
+}
+.footer__social-icon:hover {
+  color: var(--first-color);
+}
+.footer__copy {
+  font-size: var(--smaller-font-size);
+  color: hsl(var(--hue-color), 20%, 60%);
+  line-height: 1.5;
+}
+
+
+
+/* ======= CERTIFICATIONS PAGE/SECTION SPECIFIC ======= */
+.certifications__buttons {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+  gap: var(--mb-2);
+  margin-bottom: var(--mb-4);
+}
+.certifications__btn {
+  padding: .7rem 1.5rem;
+  background-color: #30363d; /* Button background */
+  color: var(--second-color);
+  border: none;
+  border-radius: .5rem;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+  font-weight: var(--font-semi);
+}
+.certifications__btn:hover,
+.certifications__btn.active {
+  background-color: var(--first-color);
+  color: black;
+}
+.certifications__container { /* Uses .work__container grid styles */
+  /* display: grid; (already in work_container if we reuse)
+  gap: 2rem; (already in work_container if we reuse) */
+}
+.certifications__item { /* Uses .work__card styles */
+  /* background-color, padding, border-radius, text-align from .work__card */
+  display: none; /* Hidden by default, shown by JS based on filter */
+}
+.certifications__item.show {
+  display: block; /* Class to show items */
+}
+.certifications__item img {
+  /* Styles from .work__card img */
+  height: 200px; /* Adjust if cert images are different aspect ratio */
+  object-fit: contain; /* Use contain for certificates to see full image */
+}
+.certifications__item-title { /* Center text for title below image */
+  margin-top: var(--mb-1);
+  font-weight: var(--font-semi);
+}
+
+
+/* ======= GITHUB CALENDAR STYLES (From your static CSS) ======= */
+.calendar {
+  font-family: Helvetica, arial, sans-serif;
+  border: 1px solid #30363d; /* Darker border */
+  border-radius: 3px;
+  min-height: 180px; /* Adjusted min-height */
+  text-align: center;
+  margin: var(--mb-4) auto;
+  padding: var(--mb-2);
+  background-color: #0d1117; /* Dark background for calendar */
+  max-width: 90%; /* Ensure it's responsive */
+}
+.calendar-graph text.wday,
+.calendar-graph text.month {
+  font-size: 9px; /* Smaller font */
+  fill: #8b949e; /* GitHub-like grey text */
+}
+.calendar .ContributionCalendar-day { /* Styles for individual days */
+  stroke: rgba(27, 31, 35, 0.06);
+  stroke-width: 1px;
+}
+/* Apply the --color-calendar variables from :root */
+.ContributionCalendar-day[data-level='0'] { background-color: var(--color-calendar-graph-day-bg); }
+.ContributionCalendar-day[data-level='1'] { background-color: var(--color-calendar-graph-day-L1-bg); }
+.ContributionCalendar-day[data-level='2'] { background-color: var(--color-calendar-graph-day-L2-bg); }
+.ContributionCalendar-day[data-level='3'] { background-color: var(--color-calendar-graph-day-L3-bg); }
+.ContributionCalendar-day[data-level='4'] { background-color: var(--color-calendar-graph-day-L4-bg); }
+
+.calendar .width-full > .float-left { display: none; }
+.calendar-graph { padding: 5px 0 0; text-align: center; }
+.contrib-legend { text-align: right; padding: 0 14px 10px 0; }
+.contrib-legend .legend li { display: inline-block; width: 10px; height: 10px; margin: 0 2px; }
+.text-small { font-size: 12px; color: #8b949e; }
+.calendar img.spinner { width: 50px; margin-top: 30px; min-height: 50px; }
+.left.text-muted { float: left; margin-left: 9px; color: #8b949e; }
+.left.text-muted a { color: var(--first-color); text-decoration: none; }
+.left.text-muted a:hover { text-decoration: underline; }
+text.ContributionCalendar-label { fill: #8b949e; font-size: 10px; }
+.day-tooltip { /* Tooltip styling */
+  white-space: nowrap; position: absolute; z-index: var(--z-tooltip);
+  padding: 8px; font-size: 11px; color: #c9d1d9; text-align: center;
+  background: rgba(13, 17, 23, 0.9); border-radius: 3px; display: none;
+  pointer-events: none; border: 1px solid #30363d;
+}
+.day-tooltip strong { color: #e6edf3; }
+.day-tooltip.is-visible { display: block; }
+.day-tooltip:after {
+  position: absolute; bottom: -5px; left: 50%; width: 0; height: 0;
+  box-sizing: border-box; margin-left: -5px; content: " ";
+  border: 5px solid transparent; border-top-color: rgba(13, 17, 23, 0.9);
+}
+
+/* ======= MEDIA QUERIES ======= */
+@media screen and (min-width: 576px) {
+  .home__container {
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    text-align: left; /* Align text to left for larger screens */
+  }
+  .home__data {
+    order: 1; /* Text on the left */
+    text-align: left;
+  }
+  .home__img-container {
+    order: 2; /* Image on the right */
+    width: 300px; /* Adjust as per original */
+    justify-self: center; /* Or end */
+    margin-top: 0;
+  }
+  .home__social {
+    justify-content: flex-start; /* Align icons to left */
+  }
+  .about__container {
+    grid-template-columns: .8fr 1fr; /* Image slightly smaller */
+    align-items: center;
+    text-align: left;
+  }
+  .about__img-container {
+    justify-self: center; /* Or start */
+  }
+  .about__text {
+    text-align: left;
+  }
+  .about__buttons {
+    flex-direction: row; /* Buttons side-by-side */
+    justify-content: flex-start; /* Align buttons to left */
+    align-items: center;
+  }
+  .work__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .certifications__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .contact__form {
+    /* max-width already set, so it will remain centered */
+  }
+  .qualification__tabs {
+    justify-content: center; /* Tabs centered */
+  }
+}
+
+@media screen and (min-width: 768px) {
+  /* :root variables for larger screens already defined in index.css */
+  body { margin: 0; /* Top margin managed by content padding */ }
+  .section { padding-top: 6rem; padding-bottom: 3rem; }
+  .section-title::after { bottom: -var(--mb-3); }
+
+  .home { padding: 8rem 0 4rem; }
+  .home__img-container { width: 350px; }
+
+  .about__img-container img { width: 280px; }
+
+  .skills__container { /* If you create a distinct skills section */
+    /* grid-template-columns: repeat(2, 1fr); */
+  }
+  .work__container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* More flexible grid */
+  }
+   .certifications__container {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
+  .qualification__data {
+    column-gap: 2rem;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .bd-grid { /* No longer display:grid by default here, specific components will use it */
+    /* margin-left: auto; margin-right: auto; Already set */
+  }
+  .home { padding: 10rem 0 5rem; }
+  .home__img-container { width: 420px; } /* Larger image */
+
+  .work__container {
+    /* grid-template-columns: repeat(3, 1fr); /* Static 3 columns for large screens */
+  }
+  .certifications__container {
+    /* grid-template-columns: repeat(3, 1fr); */
+  }
+}
+
+/* src/App.css (or Header.css) */
+
+/* ======= HEADER ======= */
+.l-header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: var(--z-fixed);
+  background-color: black; /* From your static CSS */
+  transition: box-shadow 0.3s ease; /* For smooth shadow transition */
+  /* box-shadow: 0 1px 4px rgba(146, 161, 176, 0.15); /* Default shadow, can be initially none */
+}
+
+/* .header-scrolled { /* Add this class via JS if you prefer class-based shadow
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+} */
+
+.nav {
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: var(--font-semi);
+}
+/* .bd-grid is already defined globally */
+
+.nav__logo {
+  color: var(--second-color);
+  font-size: 1.5rem; /* Your static CSS had this, can adjust */
+  font-weight: var(--font-semi);
+  display: flex;
+  align-items: center;
+}
+/* src/App.css or Header.css */
+.nav__logo-img {
+  width: 30px; /* Or your preferred size */
+  height: 30px; /* Or your preferred size */
+  border-radius: 50%;
+  margin-right: 0.5rem; /* Space between image and text */
+  /* Add transition for smooth appearance/disappearance if desired,
+     though conditional rendering is usually instant.
+     If you want a fade, you'd keep it rendered and toggle opacity/class. */
+  vertical-align: middle; /* Aligns well with text */
+}
+
+.nav__menu {
+  /* Desktop: menu is visible */
+}
+.nav__list {
+  display: flex;
+  align-items: center; /* Ensures items in the list are also centered if they have different heights */
+  gap: var(--mb-4); /* INCREASED GAP: Original was var(--mb-3). Try var(--mb-4) or a specific rem value e.g., 2rem or 2.5rem */
+                      /* var(--mb-3) is 1.5rem, var(--mb-4) is 2rem. Adjust as needed. */
+}
+.nav__item {
+  /* No specific style needed if gap is on ul */
+}
+.nav__link {
+  position: relative;
+  color: var(--second-color); /* Default link color */
+  padding: 0.5rem 0; /* Add some padding for easier clicking */
+  transition: color 0.3s;
+}
+.nav__link:hover {
+  color: var(--first-color);
+}
+/* Active link style */
+.nav__link.active-link {
+  color: var(--first-color);
+  font-weight: bold; /* Example for active state */
+}
+.nav__link.active-link::after { /* Underline for active link */
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--first-color);
+  left: 0;
+  bottom: -2px; /* Position underline */
+}
+
+
+/* Mobile Menu Toggle */
+.nav__toggle {
+  color: var(--second-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  display: none; /* Hidden on desktop */
+  z-index: calc(var(--z-fixed) + 1); /* Ensure toggle is above menu when closed */
+}
+
+
+@media screen and (max-width: 768px) {
+  .nav__menu {
+    position: fixed;
+    top: 0; /* Cover full screen from top */
+    right: -100%; /* Initially off-screen */
+    width: 70%; /* Width of the mobile menu */
+    height: 100vh;
+    padding: var(--mb-6) var(--mb-4) var(--mb-4); /* More padding */
+    background-color: #111; /* Darker background for mobile menu */
+    transition: right 0.4s ease-in-out;
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    z-index: var(--z-fixed); /* Same z-index as header, but ensure it's on top if header is transparent */
+    flex-direction: column; /* Stack list items vertically */
+    overflow-y: auto; /* Scroll if content exceeds height */
+  }
+
+  .nav__menu.show-menu {
+    right: 0; /* Slide in from the right */
+  }
+
+  .nav__list {
+    flex-direction: column;
+    align-items: flex-start; /* Align items to start */
+    gap: var(--mb-4); /* More spacing for vertical items */
+  }
+  .nav__item {
+    width: 100%; /* Make items take full width */
+  }
+  .nav__link {
+    font-size: 1.1rem; /* Slightly larger for mobile tap */
+    display: block; /* Make the whole area clickable */
+    width: 100%;
+  }
+  .nav__link.active-link::after {
+    bottom: 0; /* Adjust underline position for block links */
+  }
+
+  .nav__toggle {
+    display: block; /* Show toggle on mobile */
+  }
+}
+
+/* Add to src/App.css */
+.page-container {
+  /* This class can be used on top-level divs for each page component */
+  /* The padding-top is handled inline in AboutPage.jsx for now,
+     but a global approach would be:
+     main.l-main { padding-top: var(--header-height); }
+  */
+}
+
+.about-page .rounded-img { /* Specific to about page if needed, else global rounded-img */
+  border-radius: 50%;
+  width: 200px; /* Adjust size as needed */
+  height: 200px; /* Adjust size as needed */
+  object-fit: cover;
+  border: 3px solid var(--first-color); /* Example border */
+}
+
+.about-page__text-content p {
+  line-height: 1.7;
+  margin-bottom: var(--mb-2); /* Space between paragraphs */
+  text-align: justify; /* For better readability of long text blocks */
+}
+
+.qualification__details { /* Style for the CGPA details if any */
+    font-size: var(--smaller-font-size);
+    color: hsl(var(--hue-color), 20%, 65%);
+    margin-top: 0.2rem;
+}
+
+.calendar-container { /* Wrapper for the GitHub calendar */
+    margin-top: var(--mb-4);
+}
+
+/* Add to src/App.css if not already there or needs adjustment */
+.certifications__btn.active {
+  background-color: var(--first-color);
+  color: black;
+}
+
+.certifications__item img.certifications__img { /* specific for cert images if different from work_card img */
+    /* height: 200px; /* Example, adjust if cert images have specific aspect ratios */
+    object-fit: contain; /* Good for certificates to see the whole document */
+    background-color: white; /* If certificates have transparent parts and need a white bg */
+    padding: 0.5rem; /* Optional padding around the cert image */
+    border: 1px solid #ddd; /* Light border for the image itself */
+}
