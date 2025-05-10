@@ -693,8 +693,8 @@
   text-align: center;
   margin: var(--mb-4) auto;
   padding: var(--mb-2);
-  background-color: #0d1117; /* Dark background for calendar */
-  max-width: 90%; /* Ensure it's responsive */
+  background-color: #0d1117;
+  max-width: 90%; 
 }
 .calendar-graph text.wday,
 .calendar-graph text.month {
