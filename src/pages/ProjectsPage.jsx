@@ -4,12 +4,12 @@ import React from 'react';
 // Data for projects
 // Ensure image paths are correct (e.g., placed in public/assets/img/)
 const allProjectsData = [
-  { id: 'p1', title: 'AI Recipe Generator', imageUrl: '/portfolio/assets/img/recipe.jpg', link: 'https://github.com/adil200/AI-Recipe-Generator' },
-  { id: 'p2', title: 'DL based Medical Diagnoser', imageUrl: '/portfolio/assets/img/md.png', link: 'https://github.com/adil200/Medical-Diagnoser' },
-  { id: 'p3', title: 'Generative AI based Script Generator', imageUrl: '/portfolio/assets/img/ai-movie-script-generator-thumbnail.png', link: 'https://www.kaggle.com/code/adilmohammed/script-generator' },
-  { id: 'p4', title: 'DL based Lyrics Generator', imageUrl: '/portfolio/assets/img/lyric.jpg', link: 'https://www.kaggle.com/code/adilmohammed/lyrics-generator' },
-  { id: 'p5', title: 'Farmer Support ChatBot', imageUrl: '/portfolio/assets/img/chatbot.jpg', link: 'https://github.com/adil200/Farmer-Support-ChatBot' },
-  { id: 'p6', title: 'Spaceship Transport Prediction', imageUrl: '/portfolio/assets/img/project6.jpg', link: 'https://www.kaggle.com/code/adilmohammed/spaceship-transport-prediction' },
+  { id: 'p1', title: 'AI Recipe Generator', imageUrl: '/assets/img/recipe.jpg', link: 'https://github.com/adil200/AI-Recipe-Generator' },
+  { id: 'p2', title: 'DL based Medical Diagnoser', imageUrl: '/assets/img/md.png', link: 'https://github.com/adil200/Medical-Diagnoser' },
+  { id: 'p3', title: 'Generative AI based Script Generator', imageUrl: '/assets/img/ai-movie-script-generator-thumbnail.png', link: 'https://www.kaggle.com/code/adilmohammed/script-generator' },
+  { id: 'p4', title: 'DL based Lyrics Generator', imageUrl: '/assets/img/lyric.jpg', link: 'https://www.kaggle.com/code/adilmohammed/lyrics-generator' },
+  { id: 'p5', title: 'Farmer Support ChatBot', imageUrl: '/assets/img/chatbot.jpg', link: 'https://github.com/adil200/Farmer-Support-ChatBot' },
+  { id: 'p6', title: 'Spaceship Transport Prediction', imageUrl: '/assets/img/project6.jpg', link: 'https://www.kaggle.com/code/adilmohammed/spaceship-transport-prediction' },
   // Add any other projects
 ];
 

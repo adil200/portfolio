@@ -3,7 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useLocation } from 'react-router-dom';
 import { HashLink as Link } from 'react-router-hash-link'; // Using HashLink
 
-const reactLogo = '/portfolio/assets/img/favicon.ico'; // Path from public folder
+const reactLogo = '/assets/img/favicon.ico'; // Path from public folder
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
