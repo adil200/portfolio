@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import GitHubCalendarComponent from '../components/GitHubCalendar';
 
 // Assume images are in public folder
-const aboutHeroImage = '/assets/img/about.jpg'; // Your main about image
+const aboutHeroImage = '/portfolio/assets/img/about.jpg'; // Your main about image
 const techStackShields = [
   "https://img.shields.io/badge/c-%2300599C.svg?style=for-the-badge&logo=c&logoColor=white",
   "https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white",

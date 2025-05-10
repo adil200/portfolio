@@ -1,6 +1,6 @@
 // src/App.jsx
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import ParticleBackground from './components/ParticleBackground';
 import Header from './components/Header'; // We'll create/update this
 import Footer from './components/Footer'; // We'll create this

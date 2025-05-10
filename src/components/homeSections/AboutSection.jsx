@@ -3,8 +3,8 @@ import React from 'react';
 import { Link } from 'react-router-dom'; // For "Learn More" button
 
 // Assuming images are in public/assets/img/
-const aboutImage = '/assets/img/mega-creator.png';
-const resumeFile = '/assets/pdf/Adil_Naib_Resume.pdf'; // Assuming PDF is in public/assets/pdf/
+const aboutImage = '/portfolio/assets/img/mega-creator.png';
+const resumeFile = '/portfolio/assets/pdf/Adil_Naib_Resume.pdf'; // Assuming PDF is in public/assets/pdf/
 
 const AboutSection = () => {
   return (

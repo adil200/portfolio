@@ -3,7 +3,7 @@ import React, { forwardRef } from 'react';
 import { Link as ScrollLink } from 'react-scroll';
 import Typewriter from '../Typewriter';
 
-const profileImage = '/assets/img/perfil.png';
+const profileImage = '/portfolio/assets/img/perfil.png';
 
 const HeroSection = forwardRef((props, ref) => {
   const typewriterWords = ["Data Scientist", "Kaggle Expert", "AI Blogger"];

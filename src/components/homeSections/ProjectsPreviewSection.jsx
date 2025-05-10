@@ -7,37 +7,37 @@ const previewProjects = [
   {
     id: 1,
     title: 'AI Recipe Generator',
-    imageUrl: '/assets/img/recipe.jpg',
+    imageUrl: '/portfolio/assets/img/recipe.jpg',
     link: 'https://github.com/adil200/AI-Recipe-Generator',
   },
   {
     id: 2,
     title: 'DL based Medical Diagnoser',
-    imageUrl: '/assets/img/md.png',
+    imageUrl: '/portfolio/assets/img/md.png',
     link: 'https://github.com/adil200/Medical-Diagnoser',
   },
   {
     id: 3,
     title: 'Generative AI based Script Generator',
-    imageUrl: '/assets/img/ai-movie-script-generator-thumbnail.png',
+    imageUrl: '/portfolio/assets/img/ai-movie-script-generator-thumbnail.png',
     link: 'https://www.kaggle.com/code/adilmohammed/script-generator',
   },
   {
     id: 4,
     title: 'DL based Lyrics Generator',
-    imageUrl: '/assets/img/lyric.jpg',
+    imageUrl: '/portfolio/assets/img/lyric.jpg',
     link: 'https://www.kaggle.com/code/adilmohammed/lyrics-generator',
   },
   {
     id: 5,
     title: 'Farmer Support ChatBot',
-    imageUrl: '/assets/img/chatbot.jpg',
+    imageUrl: '/portfolio/assets/img/chatbot.jpg',
     link: 'https://github.com/adil200/Farmer-Support-ChatBot',
   },
   { // New 6th project for the preview
     id: 6,
     title: 'Spaceship Transport Prediction',
-    imageUrl: '/assets/img/project6.jpg', // Ensure this image exists in public/assets/img
+    imageUrl: '/portfolio/assets/img/project6.jpg', // Ensure this image exists in public/assets/img
     link: 'https://www.kaggle.com/code/adilmohammed/spaceship-transport-prediction',
   },
 ];
