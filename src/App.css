@@ -416,7 +416,7 @@
   /* Left text | Middle Timeline | Right Text */
   grid-template-columns: 1fr max-content 1fr; /* Middle column shrinks to fit rounder/line */
   column-gap: 1.5rem; /* Gap between columns */
-  margin-bottom: var(--mb-3); /* Space between each timeline entry */
+  margin-bottom: var(--mb-1); /* Space between each timeline entry */
   align-items: start; /* Align items to the start of their grid cell vertically */
 }
 
