@@ -15,7 +15,7 @@ const AboutSection = () => {
 
   return (
     <section className="about section bd-grid" id="about">
-      <h2 className="section-title">About</h2>
+      <h2 className="section-title"><span>About Me</span></h2>
 
       <div className="about__container"> {/* This will be a grid (text & image) on larger screens */}
         <div className="about__img-container">

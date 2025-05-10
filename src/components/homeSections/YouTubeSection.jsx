@@ -62,7 +62,7 @@ const YouTubeSection = () => {
 
   return (
     <section className="work section bd-grid" id="youtube">
-      <h2 className="section-title">YouTube Video</h2>
+      <h2 className="section-title"><span>YouTube Video</span></h2>
       
       <div className="youtube__container">
         <div className="youtube__video-wrapper">

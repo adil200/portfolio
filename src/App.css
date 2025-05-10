@@ -4,6 +4,7 @@
 .section {
   padding-top: 2rem;
   padding-bottom: 2rem;
+  text-align: center;
 }
 
 /* src/App.css */
@@ -11,32 +12,38 @@
 /* ... (other styles) ... */
 
 .section-title {
-  position: relative; /* Necessary for absolute positioning of ::after */
+  position: relative;
   font-size: var(--h2-font-size);
   color: var(--first-color);
   margin-top: var(--mb-2);
-  margin-bottom: var(--mb-4); /* This creates space AFTER the title AND its underline */
+  margin-bottom: var(--mb-6);
   text-align: center;
-  padding-bottom: 1rem; /* Add some padding to the bottom of the title itself
-                           to create space for the underline to sit in,
-                           especially if margin-bottom is applied to the title directly */
+  
+  /* Key changes for dynamic underline width: */
+  display: inline-block; /* Makes the block take the width of its content */
+  /* If you didn't wrap text in a span, and h2 is centered by parent,
+     this inline-block on h2 will also be centered. */
+  padding-bottom: 0.75rem; /* Space for the underline below the text content of h2 */
+                           /* Adjust this value to control distance of line from text */
 }
 
-.section-title::after {
-  position: absolute;
+.section-title span {
+  display: inline-block; /* Makes the span only as wide as its content (text + icons) */
+  position: relative;    /* So its ::after pseudo-element can be positioned relative to it */
+  padding-bottom: 0.75rem; /* Creates space below the text for the underline */
+                           /* Adjust this value to control distance of line from text */
+}
+
+/* Target the ::after pseudo-element OF THE SPAN */
+.section-title span::after {
   content: "";
-  width: 60px; /* Or your desired width */
-  height: 0.18rem; /* Thickness of the line */
+  position: absolute;
+  width: 100%;        /* 100% width OF THE SPAN (which is width of text) */
+  height: 0.18rem;    /* Thickness of the line */
   background-color: var(--first-color);
-  left: 50%;
-  transform: translateX(-50%); /* Center the line */
-  /*
-    KEY CHANGE: Ensure 'bottom' positions it below the text.
-    A small positive value or zero, relative to the bottom of the .section-title element's content box.
-    If .section-title has padding-bottom, the underline can sit within that padding.
-  */
-  bottom: 0; /* Positions the underline at the very bottom of the .section-title's content + padding area */
-             /* Previously, it might have been a negative value like -var(--mb-2) which pushed it up */
+  left: 0;            /* Starts at the left edge of the span */
+  bottom: 0;          /* At the bottom of the span's padding area */
+  /* No transform: translateX(-50%) needed here */
 }
 
 /* ... (rest of your App.css) ... */
@@ -367,97 +374,136 @@
 
 
 /* ======= QUALIFICATION (My Journey) SECTION ======= */
+/* src/App.css */
+/* ... existing styles ... */
+
+/* ======= QUALIFICATION (My Journey) SECTION ======= */
 .qualification__container {
-  max-width: 768px; /* As per your CSS */
+  max-width: 768px;
   margin-left: auto;
   margin-right: auto;
 }
-.qualification__tabs {
+.qualification__tabs { /* Styles for Education/Work buttons */
   display: flex;
   justify-content: center;
   margin-bottom: var(--mb-4);
   gap: var(--mb-2);
 }
 .qualification__button {
-  /* font-size: var(--h2-font-size); /* Original size */
-  font-size: 1.1rem; /* REDUCED SIZE - Adjust as needed */
-  /* Or: font-size: var(--normal-font-size); */
+  font-size: 1.1rem; /* Reduced size */
   font-weight: var(--font-semi);
   color: var(--second-color);
   cursor: pointer;
   background: none;
   border: none;
-  padding: 0.6rem 1.2rem; /* Adjust padding if font size changed significantly */
+  padding: 0.6rem 1.2rem;
   border-radius: .5rem;
   transition: color 0.3s, background-color 0.3s;
-  display: inline-flex; /* Helps with icon alignment */
-  align-items: center;  /* Vertically aligns icon and text */
+  display: inline-flex;
+  align-items: center;
 }
+.qualification__button:hover { color: var(--first-color); }
+.qualification__button.qualification__active { color: black; background-color: var(--first-color); }
 .qualification__icon {
-  /* font-size: 1.8rem; /* Original size */
-  font-size: 1.3rem; /* REDUCED SIZE - Adjust icon size too */
-  margin-right: 0.4rem; /* Adjust spacing */
+  font-size: 1.3rem; /* Reduced size */
+  margin-right: 0.4rem;
 }
-.qualification__button:hover {
-  color: var(--first-color);
-}
-.qualification__button.qualification__active {
-  color: black; /* Text color for active tab */
-  background-color: var(--first-color);
-}
+.qualification__content { display: none; }
+.qualification__content-active { display: block; }
 
-.qualification__sections {
-  /* Content for sections will be displayed based on active tab */
-}
-.qualification__content {
-  display: none; /* Hidden by default */
-}
-.qualification__content-active {
-  display: block; /* Shown when active */
-}
 .qualification__data {
   display: grid;
-  grid-template-columns: 1fr max-content 1fr;
-  column-gap: 1.5rem;
-  margin-bottom: var(--mb-2); /* Spacing between entries */
+  /* Left text | Middle Timeline | Right Text */
+  grid-template-columns: 1fr max-content 1fr; /* Middle column shrinks to fit rounder/line */
+  column-gap: 1.5rem; /* Gap between columns */
+  margin-bottom: var(--mb-3); /* Space between each timeline entry */
+  align-items: start; /* Align items to the start of their grid cell vertically */
 }
+
+/* --- Styling for the content blocks (left and right) --- */
+.qualification__data > div:first-child, /* Left content block */
+.qualification__data > div:last-child {  /* Right content block */
+  padding-top: 0.1rem; /* Small padding to align text baseline with rounder slightly better */
+}
+
+/* Left Text Column (index 0, 2, 4...) */
+.qualification__data > div:first-child {
+  text-align: right; /* Align text to the right, pushing it towards the timeline */
+}
+
+/* Right Text Column (index 1, 3, 5...) */
+.qualification__data > div:last-child {
+  text-align: left; /* Align text to the left, pushing it towards the timeline */
+}
+
+/* --- Styling for individual text elements within content blocks --- */
 .qualification__title {
   font-size: var(--normal-font-size);
   font-weight: var(--font-semi);
-  color: var(--second-color); /* Changed from white for better contrast on black bg */
+  color: var(--second-color);
   margin-bottom: 0.25rem;
+  line-height: 1.3; /* Added for better spacing if title wraps */
 }
 .qualification__subtitle {
-  display: inline-block;
+  display: block; /* Make it block to take full width of its aligned parent */
   font-size: var(--smaller-font-size);
-  color: hsl(var(--hue-color), 30%, 70%); /* Lighter text */
-  margin-bottom: var(--mb-2);
+  color: hsl(var(--hue-color), 30%, 70%);
+  margin-bottom: var(--mb-1); /* Reduced margin */
 }
 .qualification__calendar {
   font-size: var(--smaller-font-size);
   color: hsl(var(--hue-color), 30%, 60%);
-  display: flex;
-  align-items: center;
-  gap: 0.3rem;
+  display: inline-flex; /* Changed to inline-flex */
+  align-items: center;  /* Vertically center icon and text */
+  gap: 0.3rem;          /* Space between icon and text */
+  margin-top: 0.25rem;  /* Small space above calendar info */
 }
-.qualification__rounder {
-  display: inline-block;
-  width: 13px;
-  height: 13px;
-  background-color: var(--first-color);
-  border-radius: 50%;
+.qualification__details { /* For CGPA or other details */
+    font-size: var(--smaller-font-size);
+    color: hsl(var(--hue-color), 20%, 65%);
+    margin-top: 0.25rem;
+    display: block; /* Ensure it takes the alignment of its parent */
 }
+
+/* --- Styling for the middle timeline (rounder and line) --- */
+.qualification__data > div:nth-child(2) { /* Middle column for timeline graphics */
+  position: relative; /* For positioning line if needed, though usually not for this setup */
+}
+
+/* src/App.css */
+
+/* ... (other qualification styles) ... */
+
 .qualification__line {
   display: block;
-  width: 2px;
-  height: 100%;
-  background-color: var(--first-color);
-  transform: translate(5px, -7px); /* Adjust to connect rounders */
+  width: 3px !important; /* Thicker for visibility */
+  height: 70px !important; /* Fixed explicit height for testing */
+  background-color: var(--first-color) !important; /* Very obvious color */
+  margin-top: 25px;
+  margin-left: 5px;
+  transform: translateY(-7px); /* Comment out transform for now */
 }
-/* Align text based on position in grid */
-.qualification__data div:nth-child(odd) { text-align: right; }
-.qualification__data div:nth-child(even) { text-align: center; /* For the rounder/line */ }
 
+/* Ensure rounder is visible */
+.qualification__rounder {
+  display: inline-block; /* Or block with margin auto to center if parent is text-align: center */
+  width: 13px; /* Slightly bigger for test */
+  height: 13px;
+  background-color: var(--first-color);
+  border-radius: 50%;/* Make it stand out */
+}
+
+/* And its container */
+.qualification__data > div:nth-child(2) {
+  position: relative; /* Good for future absolute positioning if needed */
+  text-align: center; /* Center the inline-block rounder */
+  padding: 5px 0; 
+}
+
+/* Hide line for the very last item */
+.qualification__content > .qualification__data:last-child .qualification__line {
+  display: none;
+}
 
 /* ======= SKILLS SECTION (Tech Stack) ======= */
 .skills__container { /* Replaces .profile-section for tech stack */

@@ -48,7 +48,7 @@ const ProjectsPreviewSection = () => {
   };
   return (
     <section className="work section bd-grid" id="projects">
-      <h2 className="section-title">My Projects</h2>
+      <h2 className="section-title"><span>My Projects</span></h2>
 
       <div className="work__container">
         {previewProjects.map((project) => (

@@ -86,8 +86,8 @@ const Header = () => {
 
 
   const navLinks = [
-    { id: 'home', label: 'Home', path: '/', type: 'homeSection' },
-    { id: 'about', label: 'About', path: '/', type: 'homeSection' }, // Preview on home
+    
+    { id: 'about', label: 'About Me', path: '/', type: 'homeSection' }, // Preview on home
     { id: 'blogs', label: 'My Blogs', path: '/blogs', type: 'page' },
     { id: 'certifications', label: 'Certifications', path: '/certifications', type: 'page' },
     { id: 'projects', label: 'My Projects', path: '/projects', type: 'page' },

@@ -17,7 +17,7 @@ const ProjectsPage = () => {
   return (
     <div className="page-container" style={{ paddingTop: 'var(--header-height)' }}>
       <section className="work section bd-grid" id="projects-page"> {/* id specific for this page */}
-        <h1 className="section-title">My Projects</h1>
+        <h1 className="section-title"><span>My Projects</span></h1>
 
         <div className="work__container"> {/* Reusing .work__container for grid */}
           {allProjectsData.map((project) => (

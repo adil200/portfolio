@@ -92,7 +92,7 @@ const AboutPage = () => {
         </div>
         
         <h1 className="section-title" id="about-me">
-          <i className='bx bx-male' style={{ marginRight: '0.5rem' }}></i>About Me
+          <i className='bx bx-male' style={{ marginRight: '0.5rem' }}></i><span>About Me</span>
         </h1>
         <div className="about-page__text-content" style={{ marginBottom: 'var(--mb-6)'}}>
           <p>
@@ -112,7 +112,7 @@ const AboutPage = () => {
 
         {/* My Journey (Qualification) Section */}
         <section className="qualification section">
-          <h2 className="section-title">My Journey</h2>
+          <h2 className="section-title"><span>My Journey</span></h2>
           <div className="qualification__container">
             <div className="qualification__tabs">
               <button
@@ -146,7 +146,7 @@ const AboutPage = () => {
 
 
         <h2 className="section-title" id="tech-stack">
-          <i className='bx bx-laptop' style={{ marginRight: '0.5rem' }}></i>Tech Stack
+          <i className='bx bx-laptop' style={{ marginRight: '0.5rem' }}></i><span>Tech Stack</span>
         </h2>
         <div className="skills__list" style={{ marginBottom: 'var(--mb-6)'}}>
           {techStackShields.map((shieldUrl, index) => (
@@ -155,7 +155,7 @@ const AboutPage = () => {
         </div>
 
         <h2 className="section-title" id="github-stats">
-          <i className='bx bxs-bar-chart-alt-2' style={{ marginRight: '0.5rem' }}></i>GitHub Stats
+          <i className='bx bxs-bar-chart-alt-2' style={{ marginRight: '0.5rem' }}></i><span>GitHub Stats</span>
         </h2>
         {/* MODIFIED: Added a wrapper div with a class for centering */}
         <div className="github-stats__container">

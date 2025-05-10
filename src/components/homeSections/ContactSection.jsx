@@ -4,7 +4,7 @@ import React from 'react';
 const ContactSection = () => {
   return (
     <section className="contact section bd-grid" id="contact">
-      <h2 className="section-title">Contact</h2>
+      <h2 className="section-title"><span>Contact</span></h2>
 
       <div className="contact__container">
         {/* The form action and method are for Pageclip */}

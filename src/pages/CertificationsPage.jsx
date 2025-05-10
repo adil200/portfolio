@@ -33,7 +33,7 @@ const CertificationsPage = () => {
   return (
     <div className="page-container" style={{ paddingTop: 'var(--header-height)' }}>
       <section className="certifications section bd-grid" id="certifications-page">
-        <h1 className="section-title">My Certifications</h1>
+        <h1 className="section-title"><span>My Certifications</span></h1>
 
         <div className="certifications__buttons">
           {categories.map(cat => (
