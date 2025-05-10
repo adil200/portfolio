@@ -1,6 +1,5 @@
 // src/pages/AboutPage.jsx
 import React, { useState } from 'react';
-import GitHubCalendarComponent from '../components/GitHubCalendar';
 
 // Assume images are in public folder
 const aboutHeroImage = '/assets/img/about.jpg'; // Your main about image
@@ -43,6 +42,10 @@ const workData = [
 
 
 const AboutPage = () => {
+  const handleInteractionClick = (event) => {
+    event.stopPropagation();
+  };
+
   const [activeTab, setActiveTab] = useState('education'); // 'education' or 'work'
 
   const renderQualificationData = (data) => {
@@ -114,13 +117,13 @@ const AboutPage = () => {
             <div className="qualification__tabs">
               <button
                 className={`qualification__button ${activeTab === 'education' ? 'qualification__active' : ''}`}
-                onClick={() => setActiveTab('education')}
+                onClick={e => {setActiveTab('education'); handleInteractionClick(e);}}
               >
                 <i className="bx bxs-graduation qualification__icon"></i> Education
               </button>
               <button
                 className={`qualification__button ${activeTab === 'work' ? 'qualification__active' : ''}`}
-                onClick={() => setActiveTab('work')}
+                onClick={e => {setActiveTab('work'); handleInteractionClick(e);}}
               >
                 <i className="bx bxs-briefcase-alt-2 qualification__icon"></i> Work
               </button>
@@ -154,26 +157,20 @@ const AboutPage = () => {
         <h2 className="section-title" id="github-stats">
           <i className='bx bxs-bar-chart-alt-2' style={{ marginRight: '0.5rem' }}></i>GitHub Stats
         </h2>
-        <div style={{ textAlign: 'center', marginBottom: 'var(--mb-2)' }}>
+        {/* MODIFIED: Added a wrapper div with a class for centering */}
+        <div className="github-stats__container">
           <img 
-            style={{ width: '100%', maxWidth: '400px', marginBottom: '1rem' }} 
+            className="github-stats__img" // Added class for potential max-width styling
             src="https://github-readme-streak-stats.herokuapp.com/?user=adil200&theme=react&hide_border=false" 
             alt="GitHub Streak Stats"
           />
-          <br />
           <img 
-            style={{ width: '100%', maxWidth: '400px' }}
+            className="github-stats__img" // Added class
             src="https://github-readme-stats.vercel.app/api/top-langs/?username=adil200&theme=react&hide_border=false&include_all_commits=false&count_private=false&layout=compact" 
             alt="Top Languages"
           />
         </div>
-        <div style={{ textAlign: 'center', margin: 'var(--mb-4) 0' }}>
-          <a href="https://visitcount.itsvg.in" target="_blank" rel="noopener noreferrer">
-            <img src="https://visitcount.itsvg.in/api?id=adil200&icon=0&color=0" alt="Profile Visit Count" />
-          </a>
-        </div>
         
-        <GitHubCalendarComponent username="adil200" />
 
       </section>
     </div>

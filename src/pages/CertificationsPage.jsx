@@ -13,6 +13,10 @@ const allCertificationsData = [
 ];
 
 const CertificationsPage = () => {
+  const handleInteractionClick = (event) => {
+    event.stopPropagation();
+  };
+
   const [filter, setFilter] = useState('exams'); // Default filter
   const [filteredCerts, setFilteredCerts] = useState([]);
 
@@ -36,7 +40,7 @@ const CertificationsPage = () => {
             <button
               key={cat.key}
               className={`certifications__btn ${filter === cat.key ? 'active' : ''}`}
-              onClick={() => setFilter(cat.key)}
+              onClick={e => { setFilter(cat.key); handleInteractionClick(e); }}
             >
               {cat.label}
             </button>

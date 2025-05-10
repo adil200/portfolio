@@ -12,12 +12,14 @@ import BlogsPage from './pages/BlogsPage';
 import CertificationsPage from './pages/CertificationsPage';
 import ProjectsPage from './pages/ProjectsPage';
 import ContactSection from './components/homeSections/ContactSection'; // Contact might be a section or its own page
+import ScrollToTop from './utils/ScrollToTop';
 
 import './App.css'; // Your main application styles
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <ParticleBackground />
       <Header />
       <main className="l-main"> {/* Added l-main class from static site for consistency */}

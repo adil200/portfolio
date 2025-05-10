@@ -43,6 +43,9 @@ const previewProjects = [
 ];
 
 const ProjectsPreviewSection = () => {
+  const handleInteractionClick = (event) => {
+    event.stopPropagation();
+  };
   return (
     <section className="work section bd-grid" id="projects">
       <h2 className="section-title">My Projects</h2>
@@ -57,7 +60,7 @@ const ProjectsPreviewSection = () => {
       </div>
 
       <div style={{ textAlign: 'center', marginTop: 'var(--mb-4)' }}>
-        <Link to="/projects" className="button">
+        <Link to="/projects" className="button" onClick={handleInteractionClick}>
           See More Projects
         </Link>
       </div>

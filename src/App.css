@@ -2,7 +2,7 @@
 
 /* ======= REUSABLE CSS CLASSES ======= */
 .section {
-  padding-top: 4rem;
+  padding-top: 2rem;
   padding-bottom: 2rem;
 }
 
@@ -379,15 +379,24 @@
   gap: var(--mb-2);
 }
 .qualification__button {
-  font-size: var(--h2-font-size);
+  /* font-size: var(--h2-font-size); /* Original size */
+  font-size: 1.1rem; /* REDUCED SIZE - Adjust as needed */
+  /* Or: font-size: var(--normal-font-size); */
   font-weight: var(--font-semi);
-  color: var(--second-color); /* Default color */
+  color: var(--second-color);
   cursor: pointer;
   background: none;
   border: none;
-  padding: var(--mb-1) var(--mb-2);
+  padding: 0.6rem 1.2rem; /* Adjust padding if font size changed significantly */
   border-radius: .5rem;
   transition: color 0.3s, background-color 0.3s;
+  display: inline-flex; /* Helps with icon alignment */
+  align-items: center;  /* Vertically aligns icon and text */
+}
+.qualification__icon {
+  /* font-size: 1.8rem; /* Original size */
+  font-size: 1.3rem; /* REDUCED SIZE - Adjust icon size too */
+  margin-right: 0.4rem; /* Adjust spacing */
 }
 .qualification__button:hover {
   color: var(--first-color);
@@ -396,10 +405,7 @@
   color: black; /* Text color for active tab */
   background-color: var(--first-color);
 }
-.qualification__icon {
-  font-size: 1.8rem;
-  margin-right: var(--mb-1);
-}
+
 .qualification__sections {
   /* Content for sections will be displayed based on active tab */
 }
@@ -446,7 +452,7 @@
   width: 2px;
   height: 100%;
   background-color: var(--first-color);
-  transform: translate(5px, -13px); /* Adjust to connect rounders */
+  transform: translate(5px, -7px); /* Adjust to connect rounders */
 }
 /* Align text based on position in grid */
 .qualification__data div:nth-child(odd) { text-align: right; }
@@ -675,7 +681,7 @@
 }
 .certifications__item img {
   /* Styles from .work__card img */
-  height: 200px; /* Adjust if cert images are different aspect ratio */
+  height: 300px; /* Adjust if cert images are different aspect ratio */
   object-fit: contain; /* Use contain for certificates to see full image */
 }
 .certifications__item-title { /* Center text for title below image */
@@ -685,56 +691,22 @@
 
 
 /* ======= GITHUB CALENDAR STYLES (From your static CSS) ======= */
-.calendar {
-  font-family: Helvetica, arial, sans-serif;
-  border: 1px solid #30363d; /* Darker border */
-  border-radius: 3px;
-  min-height: 180px; /* Adjusted min-height */
-  text-align: center;
-  margin: var(--mb-4) auto;
-  padding: var(--mb-2);
-  background-color: #0d1117;
-  max-width: 90%; 
+/* src/App.css */
+/* ... existing styles ... */
+.github-stats__container {
+  text-align: center; /* Centers inline-block or inline children */
+  margin-bottom: var(--mb-2); /* Or your desired spacing */
 }
-.calendar-graph text.wday,
-.calendar-graph text.month {
-  font-size: 9px; /* Smaller font */
-  fill: #8b949e; /* GitHub-like grey text */
+.github-stats__img {
+  display: block; /* Make images block to stack them and allow auto margins for centering if needed */
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem; /* Space between the two stat images */
+  max-width: 450px; /* Prevent them from becoming too wide on large screens */
+  width: 100%; /* Make them responsive within the max-width */
 }
-.calendar .ContributionCalendar-day { /* Styles for individual days */
-  stroke: rgba(27, 31, 35, 0.06);
-  stroke-width: 1px;
-}
-/* Apply the --color-calendar variables from :root */
-.ContributionCalendar-day[data-level='0'] { background-color: var(--color-calendar-graph-day-bg); }
-.ContributionCalendar-day[data-level='1'] { background-color: var(--color-calendar-graph-day-L1-bg); }
-.ContributionCalendar-day[data-level='2'] { background-color: var(--color-calendar-graph-day-L2-bg); }
-.ContributionCalendar-day[data-level='3'] { background-color: var(--color-calendar-graph-day-L3-bg); }
-.ContributionCalendar-day[data-level='4'] { background-color: var(--color-calendar-graph-day-L4-bg); }
 
-.calendar .width-full > .float-left { display: none; }
-.calendar-graph { padding: 5px 0 0; text-align: center; }
-.contrib-legend { text-align: right; padding: 0 14px 10px 0; }
-.contrib-legend .legend li { display: inline-block; width: 10px; height: 10px; margin: 0 2px; }
-.text-small { font-size: 12px; color: #8b949e; }
-.calendar img.spinner { width: 50px; margin-top: 30px; min-height: 50px; }
-.left.text-muted { float: left; margin-left: 9px; color: #8b949e; }
-.left.text-muted a { color: var(--first-color); text-decoration: none; }
-.left.text-muted a:hover { text-decoration: underline; }
-text.ContributionCalendar-label { fill: #8b949e; font-size: 10px; }
-.day-tooltip { /* Tooltip styling */
-  white-space: nowrap; position: absolute; z-index: var(--z-tooltip);
-  padding: 8px; font-size: 11px; color: #c9d1d9; text-align: center;
-  background: rgba(13, 17, 23, 0.9); border-radius: 3px; display: none;
-  pointer-events: none; border: 1px solid #30363d;
-}
-.day-tooltip strong { color: #e6edf3; }
-.day-tooltip.is-visible { display: block; }
-.day-tooltip:after {
-  position: absolute; bottom: -5px; left: 50%; width: 0; height: 0;
-  box-sizing: border-box; margin-left: -5px; content: " ";
-  border: 5px solid transparent; border-top-color: rgba(13, 17, 23, 0.9);
-}
+
 
 /* ======= MEDIA QUERIES ======= */
 @media screen and (min-width: 576px) {
@@ -789,7 +761,7 @@ text.ContributionCalendar-label { fill: #8b949e; font-size: 10px; }
 @media screen and (min-width: 768px) {
   /* :root variables for larger screens already defined in index.css */
   body { margin: 0; /* Top margin managed by content padding */ }
-  .section { padding-top: 6rem; padding-bottom: 3rem; }
+  .section { padding-top: 2rem; padding-bottom: 3rem; }
   .section-title::after { bottom: -var(--mb-3); }
 
   .home { padding: 8rem 0 4rem; }
@@ -975,7 +947,9 @@ text.ContributionCalendar-label { fill: #8b949e; font-size: 10px; }
   width: 200px; /* Adjust size as needed */
   height: 200px; /* Adjust size as needed */
   object-fit: cover;
-  border: 3px solid var(--first-color); /* Example border */
+  border: 3px solid var(--first-color);
+  /*center the image */
+  margin: 0 auto; /* Center the image */
 }
 
 .about-page__text-content p {

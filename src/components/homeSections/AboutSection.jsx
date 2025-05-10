@@ -6,7 +6,13 @@ import { Link } from 'react-router-dom'; // For "Learn More" button
 const aboutImage = '/assets/img/mega-creator.png';
 const resumeFile = '/assets/pdf/Adil_Naib_Resume.pdf'; // Assuming PDF is in public/assets/pdf/
 
+
+
 const AboutSection = () => {
+  const handleInteractionClick = (event) => {
+    event.stopPropagation();
+  };
+
   return (
     <section className="about section bd-grid" id="about">
       <h2 className="section-title">About</h2>
@@ -26,10 +32,10 @@ const AboutSection = () => {
             📹 I've created and published educational videos on YouTube.
           </p>
           <div className="about__buttons">
-            <a href={resumeFile} download="Adil_Naib_Resume.pdf" className="button" target="_blank" rel="noopener noreferrer">
+            <a href={resumeFile} download="Adil_Naib_Resume.pdf" className="button" target="_blank" rel="noopener noreferrer" onClick={handleInteractionClick}>
               Download Resume
             </a>
-            <Link to="/about" className="button"> {/* Links to the full AboutPage */}
+            <Link to="/about" className="button" onClick={handleInteractionClick}> {/* Links to the full AboutPage */}
               Learn More
             </Link>
           </div>

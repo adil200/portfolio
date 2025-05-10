@@ -55,6 +55,10 @@ const previewBlogs = [
 ];
 
 const BlogsPreviewSection = () => {
+  const handleInteractionClick = (event) => {
+    event.stopPropagation();
+  };
+
   return (
     <section className="work section bd-grid" id="blogs">
       <h2 className="section-title">My Blogs</h2>
@@ -73,7 +77,7 @@ const BlogsPreviewSection = () => {
       </div>
 
       <div style={{ textAlign: 'center', marginTop: 'var(--mb-4)' }}>
-        <Link to="/blogs" className="button">
+        <Link to="/blogs" className="button" onClick={handleInteractionClick}>
           See More Blogs
         </Link>
       </div>
